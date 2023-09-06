@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tutorial-deployment
+  labels:
+    app: kubernetes-tutorial-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubernetes-tutorial
+  template:
+    metadata:
+      labels:
+        app: kubernetes-tutorial
+    spec:
+      containers:
+      - name: kubernetes-tutorial
+        image: kubernetes-tutorial:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
